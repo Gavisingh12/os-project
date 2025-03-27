@@ -1,4 +1,4 @@
-
+ 
 import { Button } from "@/components/ui/button";
 import { FileX, Download, Eye } from "lucide-react";
 import { type File, type Node } from "@/types/supabase";
