@@ -15,6 +15,9 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const getErrorMessage = (error: unknown) =>
+  error instanceof Error ? error.message : "An unknown error occurred";
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
@@ -43,10 +46,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
       toast({ title: "Welcome back!", description: "You've successfully signed in." });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({ 
         title: "Error signing in", 
-        description: error.message, 
+        description: getErrorMessage(error), 
         variant: "destructive" 
       });
       throw error;
@@ -58,10 +61,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { error } = await supabase.auth.signUp({ email, password });
       if (error) throw error;
       toast({ title: "Account created", description: "Please check your email to confirm your account." });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({ 
         title: "Error signing up", 
-        description: error.message, 
+        description: getErrorMessage(error), 
         variant: "destructive" 
       });
       throw error;
@@ -73,10 +76,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
       toast({ title: "Signed out", description: "You've been successfully signed out." });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({ 
         title: "Error signing out", 
-        description: error.message, 
+        description: getErrorMessage(error), 
         variant: "destructive" 
       });
       throw error;

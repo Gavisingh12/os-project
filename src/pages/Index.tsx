@@ -13,7 +13,7 @@ import { UploadFileDialog } from '@/components/UploadFileDialog';
 import { NodeCard } from '@/components/NodeCard';
 import { FileTable } from '@/components/FileTable';
 import { useAuth } from '@/contexts/AuthContext';
-import { ReplicaInsert } from '@/types/supabase';
+import { FileInsert, ReplicaInsert } from '@/types/supabase';
 import Navbar from '@/components/Navbar';
 import { useReplicas } from '@/hooks/useReplicas';
 import { toast } from '@/hooks/use-toast';
@@ -36,7 +36,7 @@ const Index = () => {
     updateNode({ id: nodeId, status });
   };
 
-  const handleCreateFile = async (fileData: any) => {
+  const handleCreateFile = async (fileData: FileInsert) => {
     return await new Promise((resolve, reject) => {
       createFile(fileData, {
         onSuccess: (data) => resolve(data),

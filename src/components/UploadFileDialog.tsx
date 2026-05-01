@@ -11,8 +11,8 @@ import { useFileUpload } from '@/hooks/useFileUpload';
 
 interface UploadFileDialogProps {
   nodes: Node[];
-  onCreateFile: (file: FileInsert) => Promise<any>;
-  onCreateReplica: (replica: ReplicaInsert) => Promise<any>;
+  onCreateFile: (file: FileInsert) => Promise<unknown>;
+  onCreateReplica: (replica: ReplicaInsert) => Promise<unknown>;
   children?: React.ReactNode;
   variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined;
   className?: string;
