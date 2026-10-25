@@ -19,6 +19,16 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+				mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+			},
+			boxShadow: {
+				'card': '0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 8px 24px -4px rgba(15, 23, 42, 0.05)',
+				'card-hover': '0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 16px 32px -4px rgba(15, 23, 42, 0.08)',
+				'subtle': '0 1px 2px 0 rgba(15, 23, 42, 0.05)',
+				'glass': '0 8px 32px 0 rgba(15, 23, 42, 0.06)',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -62,6 +72,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				theme: {
+					bg: '#F8FAFC',
+					card: '#FFFFFF',
+					border: '#E2E8F0',
+					primary: '#2563EB',
+					primaryHover: '#1D4ED8',
+					dark: '#0F172A',
+					muted: '#64748B',
 				}
 			},
 			borderRadius: {
