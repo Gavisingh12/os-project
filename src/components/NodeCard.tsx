@@ -109,31 +109,15 @@ export function NodeCard({
           </div>
         </div>
 
-        {/* Stored Replicas Preview */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-700 font-semibold flex items-center gap-1.5">
-              <Layers className="h-3.5 w-3.5 text-blue-600" />
-              Assigned Replicas ({filesOnNode.length})
-            </span>
-          </div>
-          <div className="space-y-1.5 max-h-32 overflow-y-auto pr-1">
-            {filesOnNode.length === 0 ? (
-              <p className="text-xs text-slate-400 italic py-3 text-center bg-slate-50 rounded-lg border border-slate-200/60">
-                No replicas currently on this node.
-              </p>
-            ) : (
-              filesOnNode.map(file => (
-                <div
-                  key={file.id}
-                  className="text-xs p-2 rounded-lg bg-slate-50 border border-slate-200/80 flex items-center justify-between font-mono"
-                >
-                  <span className="truncate max-w-[130px] text-slate-800 text-[11px] font-sans font-medium">{file.name}</span>
-                  <span className="text-[10px] text-slate-500">{formatBytes(file.size)}</span>
-                </div>
-              ))
-            )}
-          </div>
+        {/* Replicas Hosted Clean Summary */}
+        <div className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200/80 text-xs">
+          <span className="text-slate-600 font-medium flex items-center gap-1.5">
+            <Layers className="h-3.5 w-3.5 text-blue-600" />
+            Replicas Assigned
+          </span>
+          <span className="font-mono font-bold text-slate-900 text-xs">
+            {filesOnNode.length} {filesOnNode.length === 1 ? 'file' : 'files'}
+          </span>
         </div>
 
         {/* Warning if taking offline causes data loss */}

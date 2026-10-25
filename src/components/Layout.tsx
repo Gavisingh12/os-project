@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import {
   Server,
@@ -7,17 +7,14 @@ import {
   Files,
   BarChart3,
   Sliders,
-  BookOpen,
-  Terminal
+  BookOpen
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useDFS } from '@/hooks/useDFS';
 import { UploadFileDialog } from '@/components/UploadFileDialog';
 import { CreateNodeDialog } from '@/components/CreateNodeDialog';
-import { DFSShellModal } from '@/components/DFSShellModal';
 
 export function Layout() {
-  const [shellOpen, setShellOpen] = useState(false);
   const {
     nodes,
     files,
@@ -81,23 +78,11 @@ export function Layout() {
                 </span>
               </div>
 
-              {/* DFS Shell Terminal Button */}
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => setShellOpen(true)}
-                className="border-slate-800 bg-slate-900 hover:bg-slate-800 text-slate-100 font-mono text-xs h-8 px-2.5 rounded-lg shadow-xs flex items-center gap-1.5 transition-colors"
-                title="Launch DFS Interactive CLI Shell"
-              >
-                <Terminal className="h-3.5 w-3.5 text-blue-400" />
-                <span className="hidden md:inline font-semibold">DFS Shell</span>
-              </Button>
-
               {/* Upload File Button */}
               <UploadFileDialog
                 nodes={nodes}
                 onUploadFile={uploadFile}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs h-8 px-3 rounded-lg shadow-xs border-0"
+                className="enterprise-btn-primary font-medium text-xs h-8 px-3.5 rounded-lg border-0"
               />
 
               {/* Add Node Button */}
@@ -148,9 +133,6 @@ export function Layout() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <Outlet />
       </main>
-
-      {/* Interactive DFS Shell Modal */}
-      <DFSShellModal open={shellOpen} onOpenChange={setShellOpen} />
 
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white py-3.5 text-center text-xs text-slate-500">
